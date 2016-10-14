@@ -1,0 +1,9 @@
+﻿.btn-success {
+    background-color: #e0a422;
+    border: 1px solid #a6740a;
+}
+
+    .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-.btn-success:visited {
+        background-color: #c68f1a;
+        border: 1px solid #a6740a;
+    }

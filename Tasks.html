@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body ng-app="todoApp">
+
+
+    <script src="Scripts/Angular/angular.min.js"></script>
+    <script src="Scripts/Jquery/jquery-3.1.1.js"></script>
+    <script src="Scripts/Custom/ParentSelector.js"></script>
+    <link href="/Content/Css/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Css/Views/Main.css" rel="stylesheet" />
+    <link href="Content/Css/Themes/Form.css" rel="stylesheet" />
+    <link href="Content/Css/Themes/Buttons.css" rel="stylesheet" />
+    <link href="Content/Css/Views/Task.css" rel="stylesheet" />
+    
+
+    <h1 class="text-center">Today's Tasks</h1>
+
+    <div class="container" ng-controller="CreateTaskController">
+
+        <div class="col-sm-6">
+            <div class="row noselect">
+                <div class="check-holder">
+                    <div class="dtm-check-container pull-left">
+                        <input class="dtm-check-task" type="checkbox" id="taskCheck1" />
+                        <label for="taskCheck1"></label>
+                    </div>
+                    <!--mangler at repeat checkbox-->
+                    <div ng-repeat="item in tasks" id="dtmTaskContainer" class="dtm-task-container col-sm-11">
+                        <h3>{{item.Name}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/Application/app.js"></script>
+</body>
+</html>

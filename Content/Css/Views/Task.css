@@ -1,0 +1,118 @@
+﻿.dtm-check-container {
+    background: linear-gradient(#e0a422, #a6740a);
+    border-right: 1px solid #505e5e;
+    position: relative;
+    min-height: 55px;
+    width: 45px;
+}
+
+.dtm-task-container {
+    background: linear-gradient(#e0a422, #a6740a);
+    border-right: 1px solid #505e5e;
+    min-height: 55px;
+    padding: 0 8px;
+}
+
+    .dtm-task-container h3 {
+        margin: 6px 0;
+    }
+
+
+/*checkbox*/
+
+.dtm-check-task[type="checkbox"]:not(:checked),
+.dtm-check-task[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+    .dtm-check-task[type="checkbox"]:not(:checked) + label,
+    .dtm-check-task[type="checkbox"]:checked + label {
+        position: relative;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+
+        .dtm-check-task[type="checkbox"]:not(:checked) + label:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            margin-left: -6px;
+            top: 50%;
+            margin-top: 6px;
+            width: 29px;
+            height: 23px;
+            border: 1px solid #fff;
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        .dtm-check-task[type="checkbox"]:checked + label:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            margin-left: -6px;
+            top: 7px;
+            width: 29px;
+            height: 23px;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            background: #505e5e;
+        }
+
+        .dtm-check-task[type="checkbox"]:not(:checked) + label:after,
+        .dtm-check-task[type="checkbox"]:checked + label:after {
+            content: '✔';
+            position: absolute;
+            top: 11px;
+            left: 50%;
+            font-size: 20px;
+            line-height: 0.8;
+            color: #fff;
+            transition: all .2s;
+        }
+
+
+
+        .dtm-check-task[type="checkbox"]:not(:checked) + label:after {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .dtm-check-task[type="checkbox"]:checked + label:after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+.dtm-check-task:checked + label ~ .dtm-check-container,
+.dtm-check-task:checked + label ~ .dtm-task-container {
+}
+
+.dtm-check-container.bigBoiBackground,
+.dtm-task-container.bigBoiBackground {
+    background: linear-gradient(#4bb8b3, #24968e);
+}
+
+
+/*content text*/
+.dtm-task-container h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.dtm-task-container p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*avoid selecting text when checking checkbox*/
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently */
+}

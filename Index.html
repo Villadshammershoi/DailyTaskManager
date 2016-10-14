@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html ng-app="todoApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/Css/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Css/Themes/Validation.css" rel="stylesheet" />
+    <link href="Content/Css/Views/Main.css" rel="stylesheet" />
+    <script src="Scripts/Angular/angular.min.js"></script>
+
+</head>
+<body ng-controller="AppController as todoApp">
+
+    <img class="center-block" src="Content/Design/logo.svg" />
+    <!--test til øvelse af angular start-->
+    <section ng-init="" ng-controller="PanelController as panel">
+        <div ng-repeat="item in todoApp.items">
+            <div class="container">
+                <ul class="nav nav-pills clearfix">
+                    <li ng-class="{ active:panel.isSelected(1) }"><a ng-click="panel.selectTab(1)">Name</a></li>
+                    <li ng-class="{ active:panel.isSelected(2) }"><a ng-click="panel.selectTab(2)">Description</a></li>
+                    <li ng-class="{ active:panel.isSelected(3) }"><a ng-click="panel.selectTab(3)">Time</a></li>
+                    <li><button ng-show="todoApp.item.canEdit">Edit Task</button></li>
+                    {{tab}}
+                </ul>
+
+                <div class="panel" ng-show="panel.isSelected(1)">
+                    <h4>Name</h4>
+                    <p>{{item.name}}</p>
+                </div>
+                <div class="panel" ng-show="panel.isSelected(2)">
+                    <h4>Description</h4>
+                    <p>{{item.description}}</p>
+                </div>
+                <div class="panel" ng-show="panel.isSelected(3)">
+                    <h4>Time</h4>
+                    <p>{{item.time}}</p>
+                </div>
+
+
+                <!--Actual review-->
+                <blockquote ng-repeat="review in item.reviews">
+                    <b>Stars: {{review.stars}}</b>
+                    {{review.body}}
+                    <cite class="clearfix">by: {{review.author}}</cite>
+                </blockquote>
+                <!--Actual review-->
+
+
+                <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(item)" novalidate>
+
+
+                    <!--review preview-->
+                    <blockquote>
+                        <b>Stars: {{reviewCtrl.review.stars}}</b>
+                        {{reviewCtrl.review.body}}
+                        <cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
+                    </blockquote>
+                    <!--review preview-->
+                    <!--submit form to 'Actual review'-->
+                    <h4>Submit a review</h4>
+                    <fieldset class="form-group">
+                        <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+                            <option value="">Rate this Task</option>
+                        </select>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a review of the task..." title="Review" required></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <label>by:</label>
+                        <input ng-model="reviewCtrl.review.author" class="form-control" type="email" required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div> reviewForm is {{reviewForm.$valid}}</div>
+                        <input class="btn btn-primary pull-right" type="submit" value="Submit Review" />
+                    </fieldset>
+                    <!--submit form to 'Actual review'-->
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--test til øvelse af angular slut-->
+
+
+
+    <div ng-controller="CreateTaskController">
+
+        {{Message}}
+        <form id="CreateTaskForm">
+            <h2>Create new task</h2>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input class="form-control" name="Name" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="Description">description:</label>
+                <input class="form-control" name="Description" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="TimeStart">Task starting time:</label>
+                <input class="form-control" name="StartTime" />
+            </div>
+            <div class="form-group">
+                <label for="TimeEnd">Task ending time:</label>
+                <input class="form-control" name="EndTime" />
+            </div>
+            <div class="form-group">
+                <label for="TaskCategory">Category of task</label>
+                <input class="form-control" name="FK_Categories" />
+            </div>
+            <button class="btn btn-lg btn-success" value="Submit" ng-click="createTask()">Create task</button>
+        </form>
+    </div>
+
+
+
+    <script src="Scripts/Application/app.js"></script>
+    <script src="Scripts/Jquery/jquery-3.1.1.js"></script>
+</body>
+</html>

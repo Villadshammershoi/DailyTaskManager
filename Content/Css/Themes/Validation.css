@@ -1,0 +1,11 @@
+﻿input.ng-invalid.ng-dirty,
+textarea.ng-invalid.ng-dirty,
+select.ng-invalid.ng-dirty {
+    border: 1px solid #FA787E;
+}
+
+input.ng-valid.ng-dirty, 
+textarea.ng-valid.ng-dirty,
+select.ng-valid.ng-dirty {
+    border: 1px solid #78FA89;
+}

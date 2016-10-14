@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "CreateCategory";
+}
+
+<link href="~/Content/Css/Bootstrap/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Css/Themes/Validation.css" rel="stylesheet" />
+<link href="~/Content/Css/Views/Main.css" rel="stylesheet" />
+<script src="~/Scripts/Angular/angular.min.js"></script>
+
+<div ng-app="todoApp" ng-controller="CreateCategoryController">
+
+
+
+    <h1>{{Message}}</h1>
+    <form id="CreateCatForm">
+        <h2>Create new category</h2>
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input class="form-control" name="Name" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="Description">Bruger:</label>
+            <input class="form-control" name="FK_Users" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="TimeStart">Opgaver:</label>
+            <input class="form-control" name="FK_Tasks" />
+        </div>
+        <button class="btn btn-lg btn-success" value="Submit" ng-click="createCategory()">Create task</button>
+    </form>
+</div>
+
+
+<script src="~/Scripts/Application/app.js"></script>
+<script src="~/Scripts/Jquery/jquery-3.1.1.js"></script>
